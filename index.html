@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container-fluid" >
+            <div class="container">
+                <div class="head">
+                    <h1>Strong password Generator</h1>
+                    <h3>Genera una password sicura</h3>
+                </div>
+                <div class="mid">
+                    <p v-if="password != ''">La tua password é: {{password}} </p>
+                </div>
+                <div class="content">
+                    <div class="container-long" >
+                        <p>lunghezza della password?</p>
+                        
+                        <input type="number" v-model="limit">
+                    </div>
+                    <div class="container-repeat">
+                        Consenti la repetizione dei caratteri?
+                        <div class="options">
+                            <div>
+                                <input type="radio" name="repeat" id="" @change="yesorno">
+                                <label for="">Si</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="repeat" id="" @change="yesorno" checked="true" >
+                                <label for="">No</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="" id="let" ref="let" @change="change">
+                                <label for="">lettere</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="" id="num" ref="num" @change="change">
+                                <label for="">numeri</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="" id="sim" ref="sim" @change="change">
+                                <label for="">simboli</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <button @click="generate">
+                            Envia
+                        </button>
+                        <button>
+                            Anulla
+                        </button>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
