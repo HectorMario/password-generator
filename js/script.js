@@ -40,60 +40,34 @@ createApp({
     },
     generate(){
         password = "";
-        if(!this.limit == 0){
-            if(this.inputLet == true || this.inputNum == true || this.inputSim == true){
-                if(this.repeat){
-                    for (let i = 0; i < this.limit; i++ ){
-                       if(password.length < this.limit){
-                           if(this.inputLet){
-                               random = Math.ceil(Math.random()*this.lettere.length - 1)
-                               password += this.lettere[random]  
-                           }
-                           if(this.inputNum){
-                               random = Math.ceil(Math.random()*this.numeri.length - 1)
-                               password += this.numeri[random]  
-                           }
-                           if(this.inputSim){
-                               random = Math.ceil(Math.random()*this.simboli.length - 1)
-                               password += this.simboli[random]  
-                           }
-                       }
-                    }
-                }else{
-                   for (let i = 0; i < this.limit; i++ ){
-                           if(this.inputLet){
-                               random = Math.ceil(Math.random()*this.lettere.length - 1)
-                               if(!password.includes(this.lettere[random]) && password.length <= this.limit){
-                                   password += this.lettere[random]  
-                               } 
-                           }
-                           if(this.inputNum){
-                               random = Math.ceil(Math.random()*this.numeri.length - 1)
-                               if(!password.includes(this.numeri[random])&& password.length <= this.limit){
-                                   password += this.numeri[random]  
-                               }  
-                           }
-                           if(this.inputSim){
-                               random = Math.ceil(Math.random()*this.simboli.length - 1)
-                               if(!password.includes(this.simboli[random]) && password.length <= this.limit){
-                                   password += this.simboli[random]  
-                               }   
-                           }
-                    }
-                }
-                console.log(password);
-            }
-            else{
-                alert("mettere caratteri")
-            }
-           
-        } else{
-            alert("metti la lunghezza ")
+        newString = '';
+        if(this.inputLet){
+            newString +=this.lettere
         }
-         this.password = password
-     }
+        if(this.inputNum){
+            newString += this.numeri
+        }
+        if(this.inputSim){
+            newString += this.simboli
+        }
+        for(let i = 0 ; i < this.limit ; i++){
+            numberRamdom= Math.floor(Math.random()*newString.length);
+            if(this.repeat == false && !password.includes(newString[numberRamdom])){
+                password += newString[numberRamdom]
+            } else if(this.repeat == true) {
+                password += newString[numberRamdom]
+            } else {
+                i--
+            }
+        }
+       this.password = password
     }
 
   
-
+  }
 }).mount('#app')
+
+
+
+
+
